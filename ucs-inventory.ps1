@@ -55,7 +55,7 @@ foreach($vcenter in $vcenters) {
     Get-Cluster | ForEach-Object {
         $cluster = $_
         write-host "Cluster is $cluster"
-        $cluster | Get-VMHost | Where {$_.ConnectionState -eq “Connected”} | ForEach-Object {
+        $cluster | Get-VMHost | Where-Object {$_.ConnectionState -eq “Connected”} | ForEach-Object {
             $vmhost = $_
             write-host "ESX host is $vmhost"
             $esxHost = Get-EsxCli -VMHost $vmhost;
